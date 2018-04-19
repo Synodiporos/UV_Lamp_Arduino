@@ -1,7 +1,7 @@
 /*
  * IStateListener.h
  *
- *  Created on: 27 Μαρ 2018
+ *  Created on: 27 Ξ�Ξ±Ο� 2018
  *      Author: Synodiporos
  */
 
@@ -12,7 +12,7 @@ class IStateListener {
 public:
 	IStateListener();
 	virtual ~IStateListener();
-	virtual void stateChanged(void* s) = 0;
+	virtual void stateChanged(void* source, void* stateChanged) = 0;
 };
 
 #endif /* ISTATELISTENER_H_ */
