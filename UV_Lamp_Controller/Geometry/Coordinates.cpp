@@ -12,7 +12,7 @@ Coordinates::Coordinates() {
 
 }
 
-Coordinates::Coordinates(unsigned short int x, unsigned short int y) {
+Coordinates::Coordinates(short int x, short int y) {
 	this->x = x;
 	this->y = y;
 }
@@ -21,19 +21,19 @@ Coordinates::~Coordinates() {
 	// TODO Auto-generated destructor stub
 }
 
-void Coordinates::setX(unsigned short int x){
+void Coordinates::setX(short int x){
 	this->x = x;
 }
 
-unsigned short int Coordinates::getX(unsigned short int x){
+short int Coordinates::getX(short int x){
 	return this->x;
 }
 
-void Coordinates::setY(unsigned short int y){
+void Coordinates::setY(short int y){
 	this->y = y;
 }
 
-unsigned short int Coordinates::getY(unsigned short int y){
+short int Coordinates::getY(short int y){
 	return this->y;
 }
 
