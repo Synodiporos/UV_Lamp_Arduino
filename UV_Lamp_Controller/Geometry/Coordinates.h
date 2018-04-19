@@ -15,9 +15,9 @@ public:
 	virtual ~Coordinates();
 
 	void setX(short int x);
-	short int getX(short int x);
+	short int getX();
 	void setY(short int y);
-	short int getY(short int y);
+	short int getY();
 	Coordinates copy();
 
 private:

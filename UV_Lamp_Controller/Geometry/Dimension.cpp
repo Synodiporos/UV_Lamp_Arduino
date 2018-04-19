@@ -37,6 +37,6 @@ unsigned short int Dimension::getHeight(){
 }
 
 Dimension Dimension::copy(){
-	return new Dimension(getWidth(), getHeight());
+	return Dimension(getWidth(), getHeight());
 }
 

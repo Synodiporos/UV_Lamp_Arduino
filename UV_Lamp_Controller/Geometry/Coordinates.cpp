@@ -25,7 +25,7 @@ void Coordinates::setX(short int x){
 	this->x = x;
 }
 
-short int Coordinates::getX(short int x){
+short int Coordinates::getX(){
 	return this->x;
 }
 
@@ -33,10 +33,10 @@ void Coordinates::setY(short int y){
 	this->y = y;
 }
 
-short int Coordinates::getY(short int y){
+short int Coordinates::getY(){
 	return this->y;
 }
 
 Coordinates Coordinates::copy(){
-	return new Coordinates(this->x, this->y);
+	return Coordinates(this->x, this->y);
 }
