@@ -22,7 +22,7 @@ Coordinates::~Coordinates() {
 }
 
 void Coordinates::setX(unsigned short int x){
-
+	this->x = x;
 }
 
 unsigned short int Coordinates::getX(unsigned short int x){
@@ -30,7 +30,7 @@ unsigned short int Coordinates::getX(unsigned short int x){
 }
 
 void Coordinates::setY(unsigned short int y){
-
+	this->y = y;
 }
 
 unsigned short int Coordinates::getY(unsigned short int y){
