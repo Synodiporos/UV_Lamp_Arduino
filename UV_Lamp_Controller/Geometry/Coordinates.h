@@ -11,7 +11,18 @@
 class Coordinates {
 public:
 	Coordinates();
+	Coordinates(unsigned short int x, unsigned short int y);
 	virtual ~Coordinates();
+
+	void setX(unsigned short int x);
+	unsigned short int getX(unsigned short int x);
+	void setY(unsigned short int y);
+	unsigned short int getY(unsigned short int y);
+	Coordinates copy();
+
+private:
+	unsigned short int x = 0;
+	unsigned short int y = 0;
 };
 
 #endif /* GEOMETRY_COORDINATES_H_ */
