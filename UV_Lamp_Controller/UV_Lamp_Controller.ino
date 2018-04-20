@@ -3,6 +3,7 @@
 #include <LiquidCrystal.h>
 #include "Button/ButtonHandler.h"
 #include "Button/Button.h"
+#include "InputManager.h"
 //#include "IRSensor.h"
 //#include "Buzzer/BuzzerPlayer.h"
 //#include "Buzzer/BuzzerTone.h"
@@ -14,7 +15,7 @@
 
 
 // the setup routine runs once when you press reset:
-ButtonHandler* buttonHandler;
+InputManager* inputManager;
 //InputManager* inputManager;
 Button* buttonD = new Button(A0);
 Button* buttonC = new Button(A1);
@@ -34,7 +35,7 @@ void setup() {
 	Serial.println("Starting...");
 
 	//inputManager = new InputManager();
-	buttonHandler = new ButtonHandler();
+	inputManager = new InputManager();
 	//sensor->setStateListener(inputManager);
 
 	/*Serial.println((unsigned int)buttonHandler);
@@ -45,11 +46,11 @@ void setup() {
 	Serial.println((unsigned int)buttonA);*/
 
 
-	buttonHandler->addButton(buttonD);
-	buttonHandler->addButton(buttonC);
-	buttonHandler->addButton(buttonB);
-	buttonHandler->addButton(buttonA);
-	buttonHandler->activate();
+	inputManager->addButton(buttonD);
+	inputManager->addButton(buttonC);
+	inputManager->addButton(buttonB);
+	inputManager->addButton(buttonA);
+	inputManager->activate();
 
 	createGUI();
 
@@ -67,7 +68,7 @@ void setup() {
 void loop() {
 
 	//delay(10);
-	buttonHandler->validate();
+	inputManager->validate();
 	//sensor->validate();
 	//buzzerPlayer->validate();
 	//frame->validate();

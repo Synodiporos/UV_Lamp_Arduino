@@ -23,7 +23,7 @@ public:
 	void deactivate();
 	bool isHandlerActivate();
 	void validate();
-	void stateChanged(void* source, void* stateChanged);
+	//virtual void stateChanged(void* source, void* stateChanged) ;
 
 private:
 	std::vector<Button*>* buttons = new std::vector<Button*>;

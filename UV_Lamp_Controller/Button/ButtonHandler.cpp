@@ -7,7 +7,7 @@
 #include "ButtonHandler.h"
 
 ButtonHandler::ButtonHandler() {
-
+	//this->buttons = buttons[2];
 }
 
 ButtonHandler::~ButtonHandler() {
@@ -57,6 +57,11 @@ void ButtonHandler::addButton(Button* button){
 	getButtons()->push_back(button);
 }
 
-void ButtonHandler::ButtonHandler::stateChanged(void* s, void* state){
-
+void ButtonHandler::removeButton(Button* button){
+		button->setButtonListener(0);
+		getButtons()->push_back(button);
 }
+
+/*void ButtonHandler::ButtonHandler::stateChanged(void* s, void* state){
+
+}*/

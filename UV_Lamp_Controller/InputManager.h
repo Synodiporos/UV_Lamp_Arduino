@@ -16,6 +16,15 @@ public:
 	InputManager();
 	virtual ~InputManager();
 	void stateChanged(void* source, void* state);
+
+	void onBack();
+	void onReturn();
+	void onEnter();
+	void onOK();
+	void onForward();
+	void onFastForward();
+	void onBackward();
+	void onFastBackward();
 };
 
 #endif /* INPUTMANAGER_H_ */

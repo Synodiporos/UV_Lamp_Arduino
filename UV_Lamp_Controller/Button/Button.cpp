@@ -144,5 +144,5 @@ void Button::notifyButtonStateChanged(){
 //	Serial.println();
 
 	if(getButtonListener())
-		getButtonListener()->stateChanged(this, 0);
+		getButtonListener()->stateChanged(this, &this->buttonState);
 }
