@@ -16,6 +16,7 @@ RM := del
 -include Geometry\subdir.mk
 -include Commons\subdir.mk
 -include Button\subdir.mk
+-include AnalogInput\subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -55,7 +56,7 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 AR += \
-C:\Users\Synodiporos\git\ArduinoProject\UV_Lamp_Controller\Release\arduino.ar \
+C:\Users\sgeorgiadis\git\UV_Lamp_Arduino\UV_Lamp_Controller\Release\arduino.ar \
 
 ELF += \
 UV_Lamp_Controller.elf \
@@ -71,19 +72,19 @@ all: UV_Lamp_Controller
 UV_Lamp_Controller: $(HEX)
 	@echo 'Building target: $@'
 	@echo 'Printing size:'
-	"C:\eclipse\cpp-oxygen\eclipse\/arduinoPlugin/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/bin/avr-size" -A "C:/Users/Synodiporos/git/ArduinoProject/UV_Lamp_Controller/Release/UV_Lamp_Controller.elf"
+	"C:\Eclipse-neon\/arduinoPlugin/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/bin/avr-size" -A "C:/Users/sgeorgiadis/git/UV_Lamp_Arduino/UV_Lamp_Controller/Release/UV_Lamp_Controller.elf"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-C:\Users\Synodiporos\git\ArduinoProject\UV_Lamp_Controller\Release\arduino.ar: $(AR_OBJ)
+C:\Users\sgeorgiadis\git\UV_Lamp_Arduino\UV_Lamp_Controller\Release\arduino.ar: $(AR_OBJ)
 	@echo 'Starting archiver'
-	"C:\eclipse\cpp-oxygen\eclipse\/arduinoPlugin/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/bin/avr-gcc-ar" rcs    C:/Users/Synodiporos/git/ArduinoProject/UV_Lamp_Controller/Release/arduino.ar $(AR_OBJ)
+	"C:\Eclipse-neon\/arduinoPlugin/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/bin/avr-gcc-ar" rcs    C:/Users/sgeorgiadis/git/UV_Lamp_Arduino/UV_Lamp_Controller/Release/arduino.ar $(AR_OBJ)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 UV_Lamp_Controller.elf: $(LINK_OBJ) $(AR)
 	@echo 'Starting combiner'
-	"C:\eclipse\cpp-oxygen\eclipse\/arduinoPlugin/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/bin/avr-gcc" -Wall -Wextra -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections -mmcu=atmega328p -o "C:\Users\Synodiporos\git\ArduinoProject\UV_Lamp_Controller/Release/UV_Lamp_Controller.elf"   $(LINK_OBJ)   C:/Users/Synodiporos/git/ArduinoProject/UV_Lamp_Controller/Release/arduino.ar  "-LC:\Users\Synodiporos\git\ArduinoProject\UV_Lamp_Controller/Release" -lm
+	"C:\Eclipse-neon\/arduinoPlugin/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/bin/avr-gcc" -Wall -Wextra -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections -mmcu=atmega328p -o "C:\Users\sgeorgiadis\git\UV_Lamp_Arduino\UV_Lamp_Controller/Release/UV_Lamp_Controller.elf"   $(LINK_OBJ)   C:/Users/sgeorgiadis/git/UV_Lamp_Arduino/UV_Lamp_Controller/Release/arduino.ar  "-LC:\Users\sgeorgiadis\git\UV_Lamp_Arduino\UV_Lamp_Controller/Release" -lm
 	@echo 'Finished building: $@'
 	@echo ' '
 
