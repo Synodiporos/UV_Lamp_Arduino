@@ -5,13 +5,9 @@
  *      Author: sgeorgiadis
  */
 
+#include "Arduino.h"
 #include "AnalogInput.h"
 
-<<<<<<< Upstream, based on origin/master
-AnalogInput::AnalogInput(uint8_t pinNumber) : _pinNumber(pinNumber){
-	// TODO Auto-generated constructor stub
-
-=======
 AnalogInput::AnalogInput(uint8_t pinNumber)
 	: _pinNumber(pinNumber){
 	readings = new unsigned short int[1];
@@ -23,7 +19,6 @@ AnalogInput::AnalogInput(uint8_t pinNumber, uint8_t spv)
 	readings = new unsigned short int[spv];
 	numReadings = spv;
 	clearRecordsTable();
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
 }
 
 AnalogInput::~AnalogInput() {
@@ -43,12 +38,25 @@ unsigned short int AnalogInput::getAnalogeValue(){
 	return this->_analogValue;
 }
 
+void AnalogInput::setPropertyListener(IPropertyListener* listener){
+	this->_listener = listener;
+}
+
+IPropertyListener* AnalogInput::getPropertyListener(){
+	return this->_listener;
+}
+
+void AnalogInput::notifyPropertyChanged(){
+	if(_listener)
+		_listener->propertyChanged(this, &_analogValue);
+}
+
 void AnalogInput::validate(){
 
 	// subtract the last reading:
 	total = total - readings[readIndex];
 	// read from the sensor:
-	readings[readIndex] = analogRead(inputPin);
+	readings[readIndex] = analogRead(_pinNumber);
 	// add the reading to the total:
 	total = total + readings[readIndex];
 	// advance to the next position in the array:
@@ -61,9 +69,6 @@ void AnalogInput::validate(){
 	}
 
 	// calculate the average:
-<<<<<<< Upstream, based on origin/master
-	_analogValue = total / numReadings;
-=======
 	unsigned short int average = total / numReadings;
 
 	//Check if average value has changed
@@ -71,5 +76,4 @@ void AnalogInput::validate(){
 		notifyPropertyChanged();
 	//Update the analogeValue value
 	_analogValue = average;
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
 }

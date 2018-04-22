@@ -7,22 +7,12 @@
 
 #ifndef ANALOGINPUT_TOGGLEANALOGINPUT_H_
 #define ANALOGINPUT_TOGGLEANALOGINPUT_H_
-<<<<<<< Upstream, based on origin/master
-=======
 #include "AnalogInput.h"
 #include "../Commons/IStateListener.h"
 #include "../Commons/State.h"
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
 
-<<<<<<< Upstream, based on origin/master
-class ToggleAnalogInput {
-=======
 class ToggleAnalogInput : public AnalogInput{
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
 public:
-<<<<<<< Upstream, based on origin/master
-	ToggleAnalogInput();
-=======
 	ToggleAnalogInput(uint8_t pinNumber);
 	ToggleAnalogInput(uint8_t pinNumber, uint8_t spv);
 	ToggleAnalogInput(uint8_t pinNumber, uint8_t spv,
@@ -30,10 +20,7 @@ public:
 	ToggleAnalogInput(uint8_t pinNumber, uint8_t spv,
 			unsigned short int switchValue,
 			unsigned short int hysterisis);
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
 	virtual ~ToggleAnalogInput();
-<<<<<<< Upstream, based on origin/master
-=======
 	bool getToggleState();
 	void setSwitchValue(unsigned short int switchValue);
 	unsigned short int getSwitchValue();
@@ -51,7 +38,6 @@ private:
 
 	void notifyPropertyChanged();
 	void notifyToggleStateChanged();
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
 };
 
 #endif /* ANALOGINPUT_TOGGLEANALOGINPUT_H_ */

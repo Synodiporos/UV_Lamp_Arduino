@@ -12,14 +12,9 @@ ToggleAnalogInput::ToggleAnalogInput(uint8_t pinNumber) :
 	AnalogInput(pinNumber){
 }
 
-<<<<<<< Upstream, based on origin/master
-ToggleAnalogInput::ToggleAnalogInput() {
-	// TODO Auto-generated constructor stub
-=======
 ToggleAnalogInput::ToggleAnalogInput(uint8_t pinNumber, uint8_t spv) :
 	AnalogInput(pinNumber, spv){
 }
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
 
 ToggleAnalogInput::ToggleAnalogInput(uint8_t pinNumber, uint8_t spv,
 			unsigned short int switchValue):
@@ -39,8 +34,6 @@ ToggleAnalogInput::~ToggleAnalogInput() {
 	// TODO Auto-generated destructor stub
 }
 
-<<<<<<< Upstream, based on origin/master
-=======
 bool ToggleAnalogInput::getToggleState(){
 	return state;
 }
@@ -97,4 +90,3 @@ void ToggleAnalogInput::notifyToggleStateChanged(){
 		_stateListener->stateChanged(state);
 	}
 }
->>>>>>> 51b26b2 Input controll completed AnalogeInput, ToggleAnalogInput, InputManager & input events are done!
