@@ -9,7 +9,7 @@
 unsigned short int Button::filterInterval = 50;
 unsigned short int Button::holdStateInterval = 500;
 
-Button::Button(unsigned short int pinNumber) {
+Button::Button(uint8_t pinNumber) {
 	// TODO Auto-generated constructor stub
 	this->pinNumber = pinNumber;
 	pinMode(pinNumber, INPUT);
@@ -19,7 +19,7 @@ Button::~Button() {
 	// TODO Auto-generated destructor stub
 }
 
-int Button::getPinNumber(){
+uint8_t Button::getPinNumber(){
 	return Button::pinNumber;
 }
 
@@ -143,6 +143,10 @@ void Button::notifyButtonStateChanged(){
 //	Serial.println((unsigned int)&l, HEX);
 //	Serial.println();
 
-	if(getButtonListener())
-		getButtonListener()->stateChanged(this, &this->buttonState);
+
+
+	if(getButtonListener()){
+		State* state = new State(this, getPinNumber(), nullptr);
+		getButtonListener()->stateChanged(state);
+	}
 }

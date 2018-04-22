@@ -10,12 +10,13 @@
 
 //#include "Commons/IStateListener.h"
 #include "Button/ButtonHandler.h"
+#include "Commons/State.h"
 
 class InputManager : public ButtonHandler{
 public:
 	InputManager();
 	virtual ~InputManager();
-	void stateChanged(void* source, void* state);
+	void stateChanged(State* state);
 
 	void onBack();
 	void onReturn();
@@ -25,6 +26,8 @@ public:
 	void onFastForward();
 	void onBackward();
 	void onFastBackward();
+	void onCaseOpen();
+	void onCaseClose();
 };
 
 #endif /* INPUTMANAGER_H_ */

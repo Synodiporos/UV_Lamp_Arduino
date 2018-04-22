@@ -4,7 +4,7 @@
 #include "Button/ButtonHandler.h"
 #include "Button/Button.h"
 #include "InputManager.h"
-//#include "IRSensor.h"
+#include "AnalogInput/ToggleAnalogInput.h"
 //#include "Buzzer/BuzzerPlayer.h"
 //#include "Buzzer/BuzzerTone.h"
 //#include "Buzzer/Pitches.h"
@@ -22,6 +22,7 @@ Button* buttonC = new Button(A1);
 Button* buttonB = new Button(A2);
 Button* buttonA = new Button(A3);
 //IRSensor* sensor = new IRSensor(5, 70, 20);
+ToggleAnalogInput* irSensor = new ToggleAnalogInput(5, 6, 30, 50);
 
 //BuzzerPlayer* buzzerPlayer = new BuzzerPlayer(6, 2);
 
@@ -50,6 +51,7 @@ void setup() {
 	inputManager->addButton(buttonC);
 	inputManager->addButton(buttonB);
 	inputManager->addButton(buttonA);
+	irSensor->setStateListener(inputManager);
 	inputManager->activate();
 
 	createGUI();
@@ -69,6 +71,7 @@ void loop() {
 
 	//delay(10);
 	inputManager->validate();
+	irSensor->validate();
 	//sensor->validate();
 	//buzzerPlayer->validate();
 	//frame->validate();

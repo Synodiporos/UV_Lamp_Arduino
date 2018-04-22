@@ -6,6 +6,7 @@
  */
 #include <Arduino.h>
 #include "../Commons/IStateListener.h"
+#include <stdint.h>
 
 #ifndef BUTTON_H_
 #define BUTTON_H_
@@ -17,9 +18,9 @@ public:
 	static unsigned short int filterInterval;
 	static unsigned short int holdStateInterval;
 
-	Button(unsigned short int pinNumber);
+	Button(uint8_t pinNumber);
 	virtual ~Button();
-	int getPinNumber();
+	uint8_t getPinNumber();
 	String getName();
 	void setName(String name);
 	ButtonState getButtonState();
@@ -30,7 +31,7 @@ public:
 	void validate();
 
 private:
-	unsigned short int pinNumber = -1;
+	uint8_t pinNumber = -1;
 	unsigned long lastEventTime = 0;
 	String name = "";
 	ButtonState buttonState = ButtonState::RELEASED;

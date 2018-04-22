@@ -7,6 +7,7 @@
 
 #include <Arduino.h>
 #include "InputManager.h"
+#include "AnalogInput/ToggleAnalogInput.h"
 
 InputManager::InputManager() {
 	// TODO Auto-generated constructor stub
@@ -16,6 +17,7 @@ InputManager::InputManager() {
 InputManager::~InputManager() {
 	// TODO Auto-generated destructor stub
 }
+
 
 void InputManager::onBack(){
 	Serial.println("onBack");
@@ -49,36 +51,56 @@ void InputManager::onFastBackward(){
 	Serial.println("onFastBackward");
 }
 
-void InputManager::stateChanged(void* s, void* st){
-	if(s!=0){
-		Button* button = (Button*)s;
-		int buttonPin = button->getPinNumber();
-		ButtonState state = button->getButtonState();
-		switch (buttonPin){
-			case A0:
-				if(state==ButtonState::CLICKED)
-					onBack();
-				else if(state==ButtonState::HOLDED)
-					onReturn();
-			break;
-			case A1:
-				if(state==ButtonState::CLICKED)
-					onEnter();
-				else if(state==ButtonState::HOLDED)
-					onOK();
-			break;
-			case A2:
-				if(state==ButtonState::CLICKED)
-					onForward();
-				else if(state==ButtonState::HOLDED)
-					onFastForward();
-			break;
-			case A3:
-				if(state==ButtonState::CLICKED)
-					onBackward();
-				else if(state==ButtonState::HOLDED)
-					onFastBackward();
-			break;
+void InputManager::onCaseOpen(){
+	Serial.println("onCaseOpen");
+}
+
+void InputManager::onCaseClose(){
+	Serial.println("onCaseClose");
+}
+
+void InputManager::stateChanged(State* state){
+
+	if(state!=0){
+		Button* button = (Button*)state->getSource();
+		int pinNumber = button->getPinNumber();
+		int id = state->getName();
+		if(id==5){
+			ToggleAnalogInput* irs = (ToggleAnalogInput*)state->getSource();
+			bool toogleState = irs->getToggleState();
+			if(toogleState)
+				onCaseOpen();
+			else
+				onCaseClose();
+		}
+		else{
+			ButtonState state = button->getButtonState();
+			switch (pinNumber){
+				case A0:
+					if(state==ButtonState::CLICKED)
+						onBack();
+					else if(state==ButtonState::HOLDED)
+						onReturn();
+				break;
+				case A1:
+					if(state==ButtonState::CLICKED)
+						onEnter();
+					else if(state==ButtonState::HOLDED)
+						onOK();
+				break;
+				case A2:
+					if(state==ButtonState::CLICKED)
+						onForward();
+					else if(state==ButtonState::HOLDED)
+						onFastForward();
+				break;
+				case A3:
+					if(state==ButtonState::CLICKED)
+						onBackward();
+					else if(state==ButtonState::HOLDED)
+						onFastBackward();
+				break;
+			}
 		}
 	}
 }
