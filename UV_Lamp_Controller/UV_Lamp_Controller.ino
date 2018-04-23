@@ -5,9 +5,9 @@
 #include "Button/Button.h"
 #include "InputManager.h"
 #include "AnalogInput/ToggleAnalogInput.h"
-//#include "Buzzer/BuzzerPlayer.h"
-//#include "Buzzer/BuzzerTone.h"
-//#include "Buzzer/Pitches.h"
+//#include "Buzzer/BuzzerMelody.h"
+#include "Buzzer/BuzzerTone.h"
+#include "Buzzer/Pitches.h"
 //#include "CD/CDFrame.h"
 //#include "CD/CDElement.h"
 //#include "CD/CDOption.h"
@@ -24,7 +24,7 @@ Button* buttonA = new Button(A3);
 //IRSensor* sensor = new IRSensor(5, 70, 20);
 ToggleAnalogInput* irSensor = new ToggleAnalogInput(5, 6, 30, 50);
 
-//BuzzerPlayer* buzzerPlayer = new BuzzerPlayer(6, 2);
+//BuzzerMelody* buzzerMelody = new BuzzerMelody(6);
 
 //LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 //CDFrame* frame = new CDFrame(lcd, 4);
@@ -33,18 +33,11 @@ unsigned long time = 0;
 
 void setup() {
 	Serial.begin(9600);
-	Serial.println("Starting...");
+	Serial.println("Starting ...");
 
 	//inputManager = new InputManager();
 	inputManager = new InputManager();
 	//sensor->setStateListener(inputManager);
-
-	/*Serial.println((unsigned int)buttonHandler);
-	Serial.println((unsigned int)inputManager);
-	Serial.println((unsigned int)buttonD);
-	Serial.println((unsigned int)buttonC);
-	Serial.println((unsigned int)buttonB);
-	Serial.println((unsigned int)buttonA);*/
 
 
 	inputManager->addButton(buttonD);
@@ -54,14 +47,24 @@ void setup() {
 	irSensor->setStateListener(inputManager);
 	inputManager->activate();
 
+	Serial.println("GUI init...");
 	createGUI();
 
 	//============== BuzzerPlayer init
-	//BuzzerTone* t1 = new BuzzerTone(NOTE_C6, 500);
-	//buzzerPlayer->setHeadTone(t1);
-	//buzzerPlayer->play();
-
-
+	BuzzerTone* t1 = new BuzzerTone(NOTE_C6, 1000);
+	BuzzerTone* t2 = new BuzzerTone(NOTE_E6, 1250);
+	BuzzerTone* t3 = new BuzzerTone(NOTE_G6, 250);
+	BuzzerTone* t4 = new BuzzerTone(NOTE_G6, 250);
+	BuzzerTone* t5 = new BuzzerTone(NOTE_C7, 1000);
+	t1->setNextTone(t2);
+	t2->setNextTone(t3);
+	t3->setNextTone(t4);
+	t4->setNextTone(t5);
+	//buzzerMelody->setHeadTone(t1);
+	//buzzerMelody->setIterations(3);
+	//buzzerMelody->play();
+	tone(6, NOTE_C6);
+	Serial.println("Buzzer init...");
 
 	time = millis();
 	Serial.println("Started!");
@@ -72,8 +75,7 @@ void loop() {
 	//delay(10);
 	inputManager->validate();
 	irSensor->validate();
-	//sensor->validate();
-	//buzzerPlayer->validate();
+	//buzzerMelody->validate();
 	//frame->validate();
 }
 
