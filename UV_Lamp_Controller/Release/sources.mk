@@ -36,6 +36,7 @@ CPP_DEPS :=
 SUBDIRS := \
 AnalogInput \
 Button \
+Buzzer \
 Commons \
 Geometry \
 . \
