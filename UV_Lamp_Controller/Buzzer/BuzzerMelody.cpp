@@ -44,34 +44,37 @@ BuzzerTone* BuzzerMelody::getCurrentTone(){
 }
 
 void BuzzerMelody::play(){
-	this->_state = 3;
-}
-
-void BuzzerMelody::resume(){
 	this->_state = 2;
+	_interval = 0;
+	playCurrentTone();
 }
 
 void BuzzerMelody::pause(){
 	this->_state = 1;
+	noTone(_pinNumber);
 }
 
 void BuzzerMelody::stop(){
 	this->_state = 0;
+	_currentTone = _headTone;
+	_interval = 0;
+	noTone(_pinNumber);
 }
 
 void BuzzerMelody::playNextTone(){
-	_millis = 0;
 	//Current Tone has next tone
 	if(_currentTone->hasNext()){
 		_currentTone = _currentTone->getNextTone();
+		_interval = 0;
 		playCurrentTone();
 	}
 	//Current Tone has no next tone
 	else{
 		//There are remaining iterations to be performed
-		if(_remainingIter>=_iterations)	{
+		if(_remainingIter >= _iterations)	{
 			_currentTone = _headTone;
 			_remainingIter--;
+			_interval = 0;
 			playCurrentTone();
 		}
 		//There are NO remaining iterations
@@ -84,20 +87,29 @@ void BuzzerMelody::playNextTone(){
 }
 
 void BuzzerMelody::playCurrentTone(){
-
+	playTone(_currentTone);
 }
 
 void BuzzerMelody::resumeFromCurrent(){
 
 }
 
+void BuzzerMelody::playTone(BuzzerTone* _tone){
+	unsigned short int freq = _tone->getFrequency();
+	if(freq>0)
+		tone(_pinNumber, freq);
+	else
+		noTone(_pinNumber);
+}
+
 void BuzzerMelody::validate(){
-	if(_state==3){
-		if(_currentTone->getDuration()>=_millis){
+	if(_state==2){
+		_interval = _interval + (millis() - _millis);
+		if(_interval >= _currentTone->getDuration()){
 			playNextTone();
 		}
 	}
-	else if(_state==2){
+	else if(_state==1){
 
 	}
 	_millis = millis();

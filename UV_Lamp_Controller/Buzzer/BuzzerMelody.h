@@ -23,19 +23,20 @@ public:
 	BuzzerTone* getCurrentTone();
 
 	void play();
-	void resume();
 	void pause();
 	void stop();
 
+	void playTone(BuzzerTone* tone);
 	void validate();
 
 private:
 	uint8_t _pinNumber = 0;
-	//0=stop, 1=pause, 2=resume, 3=play
+	//0=stop, 1=pause, 2=play
 	uint8_t _state = 0;
 	short int _iterations = 1;
 	short int _remainingIter = 1;
 	unsigned long int _millis = 0;
+	unsigned short int _interval = 0;
 	BuzzerTone* _headTone;
 	BuzzerTone* _currentTone = 0;
 
