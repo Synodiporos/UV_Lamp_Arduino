@@ -2,7 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2018-04-23 21:05:24
+//This file has been generated on 2018-04-25 01:33:45
 
 #include "Arduino.h"
 #include "Arduino.h"
@@ -11,6 +11,7 @@
 #include "Button/Button.h"
 #include "InputManager.h"
 #include "AnalogInput/ToggleAnalogInput.h"
+#include "Buzzer/BuzzerMelody.h"
 #include "Buzzer/BuzzerTone.h"
 #include "Buzzer/Pitches.h"
 

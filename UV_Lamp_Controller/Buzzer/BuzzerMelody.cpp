@@ -33,7 +33,7 @@ uint8_t BuzzerMelody::getPinNumber(){
 
 void BuzzerMelody::setIterations(short int iterations){
 	this->_iterations = iterations;
-	this->_remainingIter = iterations;
+	this->_iterTBP = 0;
 }
 
 short int BuzzerMelody::getIterations(){
@@ -53,29 +53,26 @@ BuzzerTone* BuzzerMelody::getCurrentTone(){
 }
 
 void BuzzerMelody::play(){
-	this->_state = 3;
-	tone(getPinNumber(), getHeadTone()->getFrequency());
-}
-
-void BuzzerMelody::resume(){
 	this->_state = 2;
+	_interval = 0;
+	playCurrentTone();
 }
 
 void BuzzerMelody::pause(){
 	this->_state = 1;
-	noTone(getPinNumber());
+	noTone(_pinNumber);
 }
 
 void BuzzerMelody::stop(){
 	this->_state = 0;
-	noTone(getPinNumber());
 	_currentTone = _headTone;
-	_millis = 0;
-	_remainingIter = _iterations;
+	_interval = 0;
+	_iterTBP = _iterations;
+	noTone(_pinNumber);
 }
 
 void BuzzerMelody::playNextTone(){
-	_millis = 0;
+	_interval = 0;
 	//Current Tone has next tone
 	if(_currentTone->hasNext()){
 		_currentTone = _currentTone->getNextTone();
@@ -84,35 +81,46 @@ void BuzzerMelody::playNextTone(){
 	//Current Tone has no next tone
 	else{
 		//There are remaining iterations to be performed
-		if(_remainingIter>=_iterations)	{
+		if(_iterTBP==-1 || _iterTBP<_iterations)	{
 			_currentTone = _headTone;
-			_remainingIter--;
+			_iterTBP++;
 			playCurrentTone();
 		}
 		//There are NO remaining iterations
 		else{
 			_currentTone = _currentTone->getNextTone();
-			_remainingIter = _iterations;
 			stop();
 		}
 	}
 }
 
 void BuzzerMelody::playCurrentTone(){
-
+	playTone(_currentTone);
 }
 
 void BuzzerMelody::resumeFromCurrent(){
 
 }
 
+void BuzzerMelody::playTone(BuzzerTone* _tone){
+	unsigned short int freq = _tone->getFrequency();
+	if(freq>0)
+		tone(_pinNumber, freq);
+	else
+		noTone(_pinNumber);
+
+	Serial.print("Play Tone: ");
+		Serial.println(freq);
+}
+
 void BuzzerMelody::validate(){
-	if(_state==3){
-		if(_currentTone->getDuration()>=_millis){
+	if(_state==2){
+		_interval = _interval + (millis() - _millis);
+		if(_interval >= _currentTone->getDuration()){
 			playNextTone();
 		}
 	}
-	else if(_state==2){
+	else if(_state==1){
 
 	}
 	_millis = millis();

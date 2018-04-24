@@ -1,8 +1,10 @@
 /AnalogInput/
 /Button/
+/Buzzer/
 /Commons/
 /Geometry/
 /core/
 /libraries/
-/Buzzer/
-/objects.mk
+/makefile
+/sources.mk
+/subdir.mk

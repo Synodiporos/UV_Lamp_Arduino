@@ -5,7 +5,7 @@
 #include "Button/Button.h"
 #include "InputManager.h"
 #include "AnalogInput/ToggleAnalogInput.h"
-//#include "Buzzer/BuzzerMelody.h"
+#include "Buzzer/BuzzerMelody.h"
 #include "Buzzer/BuzzerTone.h"
 #include "Buzzer/Pitches.h"
 //#include "CD/CDFrame.h"
@@ -24,7 +24,7 @@ Button* buttonA = new Button(A3);
 //IRSensor* sensor = new IRSensor(5, 70, 20);
 ToggleAnalogInput* irSensor = new ToggleAnalogInput(5, 6, 30, 50);
 
-//BuzzerMelody* buzzerMelody = new BuzzerMelody(6);
+BuzzerMelody* buzzerMelody = new BuzzerMelody(6);
 
 //LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 //CDFrame* frame = new CDFrame(lcd, 4);
@@ -52,30 +52,34 @@ void setup() {
 
 	//============== BuzzerPlayer init
 	BuzzerTone* t1 = new BuzzerTone(NOTE_C6, 1000);
-	BuzzerTone* t2 = new BuzzerTone(NOTE_E6, 1250);
-	BuzzerTone* t3 = new BuzzerTone(NOTE_G6, 250);
+	BuzzerTone* t2 = new BuzzerTone(NOTE_E6, 1000);
+	BuzzerTone* t3 = new BuzzerTone(NOTE_BREAK, 250);
 	BuzzerTone* t4 = new BuzzerTone(NOTE_G6, 250);
 	BuzzerTone* t5 = new BuzzerTone(NOTE_C7, 1000);
 	t1->setNextTone(t2);
 	t2->setNextTone(t3);
 	t3->setNextTone(t4);
 	t4->setNextTone(t5);
-	//buzzerMelody->setHeadTone(t1);
-	//buzzerMelody->setIterations(3);
-	//buzzerMelody->play();
-	tone(6, NOTE_C6);
+	buzzerMelody->setHeadTone(t1);
+	buzzerMelody->setIterations(3);
+	buzzerMelody->play();
 	Serial.println("Buzzer init...");
 
 	time = millis();
 	Serial.println("Started!");
 }
 
-void loop() {
+unsigned long int _millis = 0;
 
+void loop() {
+	if(millis()-_millis>=1500){
+		//buzzerMelody->pause();
+	}
+	_millis = millis();
 	//delay(10);
 	inputManager->validate();
 	irSensor->validate();
-	//buzzerMelody->validate();
+	buzzerMelody->validate();
 	//frame->validate();
 }
 

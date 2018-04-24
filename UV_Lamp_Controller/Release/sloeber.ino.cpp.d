@@ -39,8 +39,9 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  ..\AnalogInput/../Commons/IPropertyListener.h \
  ..\AnalogInput/../Commons/Object.h \
  ..\AnalogInput/../Commons/IStateListener.h \
- ..\AnalogInput/../Commons/State.h ..\Buzzer/BuzzerTone.h \
- ..\Buzzer/Pitches.h ..\UV_Lamp_Controller.ino
+ ..\AnalogInput/../Commons/State.h ..\Buzzer/BuzzerMelody.h \
+ ..\Buzzer/BuzzerTone.h ..\Buzzer/BuzzerTone.h ..\Buzzer/Pitches.h \
+ ..\UV_Lamp_Controller.ino
 
 C:\eclipse\cpp-oxygen\eclipse\arduinoPlugin\packages\arduino\hardware\avr\1.6.21\cores\arduino/Arduino.h:
 
@@ -133,6 +134,10 @@ C:\eclipse\cpp-oxygen\eclipse\arduinoPlugin\libraries\ArduinoSTL\1.1.0\src/initi
 ..\AnalogInput/../Commons/IStateListener.h:
 
 ..\AnalogInput/../Commons/State.h:
+
+..\Buzzer/BuzzerMelody.h:
+
+..\Buzzer/BuzzerTone.h:
 
 ..\Buzzer/BuzzerTone.h:
 
