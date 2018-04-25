@@ -21,6 +21,7 @@ public:
 	void setIterations(short int iterations);
 	short int getIterations();
 	void setHeadTone(BuzzerTone* headTone);
+	uint8_t getState();
 	BuzzerTone* getHeadTone();
 	BuzzerTone* getCurrentTone();
 	void play();
@@ -34,7 +35,7 @@ private:
 	//0=stop, 1=pause, 2=play
 	uint8_t _state = 0;
 	short int _iterations = 1;
-	short int _iterTBP = 0;
+	short int _performedIter = 0;
 	unsigned long int _millis = 0;
 	unsigned short int _interval = 0;
 	BuzzerTone* _headTone = nullptr;
