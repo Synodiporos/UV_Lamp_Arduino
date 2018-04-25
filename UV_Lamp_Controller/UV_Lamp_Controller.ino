@@ -77,7 +77,7 @@ void loop() {
 		_millis = millis();
 	}
 	if(buzzerMelody->getState()==0 && millis()-_millis>=3000){
-		buzzerMelody->play();
+		//buzzerMelody->play();
 		_millis = millis();
 	}
 
