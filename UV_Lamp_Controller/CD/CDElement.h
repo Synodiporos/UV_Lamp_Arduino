@@ -23,7 +23,7 @@ public:
 	void setSize(uint8_t width, uint8_t height);
 	Dimension* getSize();
 
-	void print(LiquidCrystal lcd);
+	void print(LiquidCrystal* lcd);
 	void validate();
 
 private:

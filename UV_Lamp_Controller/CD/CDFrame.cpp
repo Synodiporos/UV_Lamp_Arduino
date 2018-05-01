@@ -98,10 +98,13 @@ unsigned short int CDFrame::coordinatesToIndex(Coordinates* coords){
 	return GeometryUtil::coordinatesToIndex(coords, columns);
 }
 
-void CDFrame::print(LiquidCrystal lcd){
+void CDFrame::print(LiquidCrystal* lcd){
 	for(short int i=0; i<=capacity; i++){
 		CDElement* elem = elements[i];
 		if(elem){
+
+			Coordinates* c = indexToCoordinates(i);
+			lcd->setCursor(c->getX(), c->getY());
 			elem->print(lcd);
 		}
 	}

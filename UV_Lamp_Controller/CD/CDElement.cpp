@@ -39,8 +39,9 @@ Dimension* CDElement::getSize(){
 	return this->size;
 }
 
-void CDElement::print(LiquidCrystal lcd){
-
+void CDElement::print(LiquidCrystal* lcd){
+	char* c = getLabel().c_str();
+	lcd->print(c);
 }
 
 void CDElement::validate(){

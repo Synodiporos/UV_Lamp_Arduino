@@ -34,12 +34,12 @@ public:
 	void setViewPosition(uint8_t viewPosition);
 
 
-	void print(LiquidCrystal lcd);
+	void print(LiquidCrystal* lcd);
 	void validate();
 
 private:
 	uint8_t columns = 1;
-	uint8_t rows = 2;
+	uint8_t rows = 1;
 	uint8_t position = 0;
 	uint8_t size = 0;
 	uint8_t capacity = 0;
