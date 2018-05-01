@@ -2,11 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-<<<<<<< HEAD
-//This file has been generated on 2018-04-25 21:23:36
-=======
-//This file has been generated on 2018-04-25 09:44:34
->>>>>>> branch 'master' of https://github.com/Synodiporos/UV_Lamp_Arduino
+//This file has been generated on 2018-04-27 21:12:24
 
 #include "Arduino.h"
 #include "Arduino.h"
@@ -18,6 +14,8 @@
 #include "Buzzer/BuzzerMelody.h"
 #include "Buzzer/BuzzerTone.h"
 #include "Buzzer/Pitches.h"
+#include "Geometry/GeometryUtil.h"
+#include "Geometry/Coordinates.h"
 
 void setup() ;
 void loop() ;

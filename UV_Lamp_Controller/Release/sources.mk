@@ -37,9 +37,11 @@ SUBDIRS := \
 AnalogInput \
 Button \
 Buzzer \
+CD \
 Commons \
 Geometry \
 . \
+View \
 core/core \
 libraries/ArduinoSTL/src \
 libraries/ArduinoSTL/src/abi \

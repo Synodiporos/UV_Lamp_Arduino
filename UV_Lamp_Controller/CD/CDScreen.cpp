@@ -7,8 +7,12 @@
 
 #include "CDScreen.h"
 
-CDScreen::CDScreen() {
-	// TODO Auto-generated constructor stub
+CDScreen::CDScreen(){
+
+}
+
+CDScreen::CDScreen(LiquidCrystal* _lcd) :
+	lcd(_lcd){
 
 }
 
@@ -16,3 +20,6 @@ CDScreen::~CDScreen() {
 	// TODO Auto-generated destructor stub
 }
 
+void CDScreen:: print(){
+
+}

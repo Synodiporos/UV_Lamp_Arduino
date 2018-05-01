@@ -41,7 +41,8 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  ..\AnalogInput/../Commons/IStateListener.h \
  ..\AnalogInput/../Commons/State.h ..\Buzzer/BuzzerMelody.h \
  ..\Buzzer/BuzzerTone.h ..\Buzzer/BuzzerTone.h ..\Buzzer/Pitches.h \
- ..\UV_Lamp_Controller.ino
+ ..\Geometry/GeometryUtil.h ..\Geometry/Coordinates.h \
+ ..\Geometry/Coordinates.h ..\UV_Lamp_Controller.ino
 
 C:\eclipse\cpp-oxygen\eclipse\arduinoPlugin\packages\arduino\hardware\avr\1.6.21\cores\arduino/Arduino.h:
 
@@ -142,5 +143,11 @@ C:\eclipse\cpp-oxygen\eclipse\arduinoPlugin\libraries\ArduinoSTL\1.1.0\src/initi
 ..\Buzzer/BuzzerTone.h:
 
 ..\Buzzer/Pitches.h:
+
+..\Geometry/GeometryUtil.h:
+
+..\Geometry/Coordinates.h:
+
+..\Geometry/Coordinates.h:
 
 ..\UV_Lamp_Controller.ino:

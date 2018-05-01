@@ -13,8 +13,10 @@ RM := del
 -include libraries\ArduinoSTL\src\abi\subdir.mk
 -include libraries\ArduinoSTL\src\subdir.mk
 -include core\core\subdir.mk
+-include View\subdir.mk
 -include Geometry\subdir.mk
 -include Commons\subdir.mk
+-include CD\subdir.mk
 -include Buzzer\subdir.mk
 -include Button\subdir.mk
 -include AnalogInput\subdir.mk

@@ -8,6 +8,8 @@
 #include "Buzzer/BuzzerMelody.h"
 #include "Buzzer/BuzzerTone.h"
 #include "Buzzer/Pitches.h"
+#include "Geometry/GeometryUtil.h"
+#include "Geometry/Coordinates.h"
 //#include "CD/CDFrame.h"
 //#include "CD/CDElement.h"
 //#include "CD/CDOption.h"
@@ -26,7 +28,7 @@ ToggleAnalogInput* irSensor = new ToggleAnalogInput(5, 6, 30, 50);
 
 BuzzerMelody* buzzerMelody ;
 
-//LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 //CDFrame* frame = new CDFrame(lcd, 4);
 
 unsigned long int _millis = 0;
@@ -65,6 +67,9 @@ void setup() {
 	//buzzerMelody->setIterations(3);
 	buzzerMelody->play();
 	Serial.println("Buzzer init...");
+
+
+
 
 	Serial.println("Started!");
 	_millis = millis();
