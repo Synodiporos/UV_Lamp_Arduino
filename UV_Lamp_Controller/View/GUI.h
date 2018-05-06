@@ -12,17 +12,17 @@
 #include "../CD/CDElement.h"
 //#include "../CD/CDScreen.h";
 #include <LiquidCrystal.h>
-#include <string>
+//#include <string>
 
 class GUI : public CDScreen{
 public:
-	CDFrame frameMain();
-	CDFrame frameMenu1();
+	CDFrame* frameMain = new CDFrame(4, 2, 2);
+	CDFrame frameMenu1;
 	CDElement* label1 = new CDElement("label1");
 	CDElement* label2 = new CDElement("label2");
+	CDElement* label3 = new CDElement("label3");
+	CDElement* label4 = new CDElement("label4");
 
-
-	GUI();
 	GUI(LiquidCrystal* lcd);
 	virtual ~GUI();
 

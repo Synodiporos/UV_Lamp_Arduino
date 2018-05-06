@@ -42,7 +42,11 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  ..\AnalogInput/../Commons/State.h ..\Buzzer/BuzzerMelody.h \
  ..\Buzzer/BuzzerTone.h ..\Buzzer/BuzzerTone.h ..\Buzzer/Pitches.h \
  ..\Geometry/GeometryUtil.h ..\Geometry/Coordinates.h \
- ..\Geometry/Coordinates.h ..\UV_Lamp_Controller.ino
+ ..\Geometry/Coordinates.h ..\View/GUI.h ..\View/../CD/CDScreen.h \
+ ..\View/../CD/CDFrame.h ..\View/../CD/../Geometry/Coordinates.h \
+ ..\View/../CD/../Geometry/GeometryUtil.h ..\View/../CD/CDElement.h \
+ ..\View/../CD/../Geometry/Dimension.h ..\View/../CD/CDFrame.h \
+ ..\View/../CD/CDElement.h ..\UV_Lamp_Controller.ino
 
 C:\eclipse\cpp-oxygen\eclipse\arduinoPlugin\packages\arduino\hardware\avr\1.6.21\cores\arduino/Arduino.h:
 
@@ -149,5 +153,23 @@ C:\eclipse\cpp-oxygen\eclipse\arduinoPlugin\libraries\ArduinoSTL\1.1.0\src/initi
 ..\Geometry/Coordinates.h:
 
 ..\Geometry/Coordinates.h:
+
+..\View/GUI.h:
+
+..\View/../CD/CDScreen.h:
+
+..\View/../CD/CDFrame.h:
+
+..\View/../CD/../Geometry/Coordinates.h:
+
+..\View/../CD/../Geometry/GeometryUtil.h:
+
+..\View/../CD/CDElement.h:
+
+..\View/../CD/../Geometry/Dimension.h:
+
+..\View/../CD/CDFrame.h:
+
+..\View/../CD/CDElement.h:
 
 ..\UV_Lamp_Controller.ino:

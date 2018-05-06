@@ -6,12 +6,13 @@
  */
 
 #include "CDElement.h"
+#include "Arduino.h"
 
 CDElement::CDElement() {
-	this->label = "";
+	this->label = new char[0];
 }
 
-CDElement::CDElement(std::string label) {
+CDElement::CDElement(char* label) {
 	this->label = label;
 }
 
@@ -19,16 +20,16 @@ CDElement::~CDElement() {
 	delete size;
 }
 
-void CDElement::setLabel(std::string label){
-
+void CDElement::setLabel(char* label){
+	this->label = label;
 }
 
-std::string CDElement::getLabel(){
+char* CDElement::getLabel(){
 	return this->label;
 }
 
-void CDElement::setSize(Dimension size){
-
+void CDElement::setSize(Dimension* size){
+	this->size = size;
 }
 
 void CDElement::setSize(uint8_t width, uint8_t height){
@@ -40,8 +41,10 @@ Dimension* CDElement::getSize(){
 }
 
 void CDElement::print(LiquidCrystal* lcd){
-	char* c = getLabel().c_str();
-	lcd->print(c);
+	Serial.print("Printing Element: ");
+	Serial.println((int)this);
+
+	lcd->print(getLabel());
 }
 
 void CDElement::validate(){

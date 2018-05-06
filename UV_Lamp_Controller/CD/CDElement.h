@@ -7,19 +7,19 @@
 
 #ifndef CD_CDELEMENT_H_
 #define CD_CDELEMENT_H_
-#include <string>
+//#include <string>
 #include "../Geometry/Dimension.h"
 #include <LiquidCrystal.h>
 
 class CDElement {
 public:
 	CDElement();
-	CDElement(std::string label);
+	CDElement(char* label);
 	virtual ~CDElement();
 
-	void setLabel(std::string label);
-	std::string getLabel();
-	void setSize(Dimension size);
+	void setLabel(char* label);
+	char* getLabel();
+	void setSize(Dimension* size);
 	void setSize(uint8_t width, uint8_t height);
 	Dimension* getSize();
 
@@ -27,7 +27,7 @@ public:
 	void validate();
 
 private:
-	std::string label;
+	char* label;
 	Dimension* size = new Dimension();
 };
 

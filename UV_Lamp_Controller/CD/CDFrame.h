@@ -17,6 +17,8 @@ class CDFrame {
 public:
 	CDFrame();
 	CDFrame(uint8_t capacity);
+	CDFrame(uint8_t cols, uint8_t rows);
+	CDFrame(uint8_t capacity, uint8_t cols, uint8_t rows);
 	virtual ~CDFrame();
 
 	void addElement(CDElement* element);
@@ -28,11 +30,14 @@ public:
 	CDElement* getElementAt(uint8_t index);
 	CDElement* getElementAt(uint8_t x, uint8_t y);
 
+	void setColumns(uint8_t columns);
 	uint8_t getColumns();
+	void setRows(uint8_t rows);
 	uint8_t getRows();
+	void setLayout(uint8_t cols, uint8_t rows);
 	uint8_t getViewPosition();
 	void setViewPosition(uint8_t viewPosition);
-
+	uint8_t columnsToVerticalCell(uint8_t cols);
 
 	void print(LiquidCrystal* lcd);
 	void validate();

@@ -10,6 +10,7 @@
 #include "Buzzer/Pitches.h"
 #include "Geometry/GeometryUtil.h"
 #include "Geometry/Coordinates.h"
+#include "View/GUI.h"
 //#include "CD/CDFrame.h"
 //#include "CD/CDElement.h"
 //#include "CD/CDOption.h"
@@ -66,10 +67,6 @@ void setup() {
 	//buzzerMelody->setHeadTone(t1);
 	//buzzerMelody->setIterations(3);
 	buzzerMelody->play();
-	Serial.println("Buzzer init...");
-
-
-
 
 	Serial.println("Started!");
 	_millis = millis();
@@ -93,22 +90,10 @@ void loop() {
 	//frame->validate();
 }
 
+GUI* gui = new GUI(&lcd);
+
 void createGUI(){
-	/*lcd.setCursor(0, 0);
-	CDElement elem1("elem1");
-	CDOption opt1("opt1");
-	CDOption opt2("opt2");
-	CDOption opt3("opt3");
 
-	std::string txt = "Test Text!";
-
-	frame->addElemenentAtIndex(&elem1, 0);
-	frame->addElemenentAtIndex(&opt1, 1);
-	frame->addElemenentAtIndex(&opt2, 2);
-	frame->addElemenentAtIndex(&opt3, 3);
-
-	frame->begin(16,2);
-	lcd.print("Start!");
-
-	frame->print();*/
+	gui->init();
+	gui->print();
 }

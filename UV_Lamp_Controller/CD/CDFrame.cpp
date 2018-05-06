@@ -6,17 +6,37 @@
  */
 
 #include "CDFrame.h"
+#include "Arduino.h"
 
 CDFrame::CDFrame() {
 	// TODO Auto-generated constructor stub
+	this->capacity = 1;
 	elements = new CDElement*[1];
 	size = 0;
 }
 
 CDFrame::CDFrame(uint8_t capacity) {
+	this->capacity = capacity;
 	if(capacity>0)
 		elements = new CDElement*[capacity];
 	size = 0;
+}
+
+CDFrame::CDFrame(uint8_t cols, uint8_t rows){
+	this->columns = cols;
+	this->rows = rows;
+	elements = new CDElement*[1];
+	this->capacity = 1;
+	size = 0;
+}
+
+CDFrame::CDFrame(uint8_t capacity, uint8_t cols, uint8_t rows){
+	this->capacity = capacity;
+	if(capacity>0)
+		elements = new CDElement*[capacity];
+	size = 0;
+	this->columns = cols;
+	this->rows = rows;
 }
 
 CDFrame::~CDFrame() {
@@ -29,9 +49,16 @@ void CDFrame::addElement(CDElement* element){
 }
 
 void CDFrame::addElementAt(CDElement* element, uint8_t index){
-	if(index>0 && index<capacity){
+	if(index<capacity){
 		elements[index] = element;
 		size++;
+
+		Serial.print("Adding Element: ");
+		Serial.print((int) element);
+		Serial.print(" into CDFrame: ");
+		Serial.print((int)this);
+		Serial.print(" at: ");
+		Serial.println((int)index);
 	}
 }
 
@@ -73,12 +100,26 @@ CDElement* CDFrame::getElementAt(uint8_t x, uint8_t y){
 	return getElementAt(index);
 }
 
+void CDFrame::setColumns(uint8_t columns){
+	this->columns = columns;
+}
+
 uint8_t CDFrame::getColumns(){
 	return this->columns;
 }
 
+
+void CDFrame::setRows(uint8_t rows){
+	this->rows = rows;
+}
+
 uint8_t CDFrame::getRows(){
 	return this->rows;
+}
+
+void CDFrame::setLayout(uint8_t cols, uint8_t rows){
+	this->columns = cols;
+	this->rows = rows;
 }
 
 uint8_t CDFrame::getViewPosition(){
@@ -98,13 +139,26 @@ unsigned short int CDFrame::coordinatesToIndex(Coordinates* coords){
 	return GeometryUtil::coordinatesToIndex(coords, columns);
 }
 
+
+uint8_t CDFrame::columnsToVerticalCell(uint8_t cols){
+	return (16/columns)*cols;
+}
+
 void CDFrame::print(LiquidCrystal* lcd){
-	for(short int i=0; i<=capacity; i++){
+	for(short int i=0; i<=size; i++){
 		CDElement* elem = elements[i];
 		if(elem){
 
 			Coordinates* c = indexToCoordinates(i);
-			lcd->setCursor(c->getX(), c->getY());
+			uint8_t x = columnsToVerticalCell(c->getX());
+			lcd->setCursor(x, c->getY());
+
+			Serial.print("Set cursor: [");
+			Serial.print(x);
+			Serial.print(",");
+			Serial.print(x);
+			Serial.println("]");
+
 			elem->print(lcd);
 		}
 	}
