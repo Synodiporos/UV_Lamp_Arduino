@@ -43,7 +43,8 @@ sloeber.ino.cpp.o: ..\sloeber.ino.cpp \
  ..\Buzzer/BuzzerTone.h ..\Buzzer/BuzzerTone.h ..\Buzzer/Pitches.h \
  ..\Geometry/GeometryUtil.h ..\Geometry/Coordinates.h \
  ..\Geometry/Coordinates.h ..\View/GUI.h ..\View/../CD/CDScreen.h \
- ..\View/../CD/CDFrame.h ..\View/../CD/../Geometry/Coordinates.h \
+ ..\View/../CD/CDFrame.h ..\View/../CD/CDScreen.h \
+ ..\View/../CD/../Geometry/Coordinates.h \
  ..\View/../CD/../Geometry/GeometryUtil.h ..\View/../CD/CDElement.h \
  ..\View/../CD/../Geometry/Dimension.h ..\View/../CD/CDFrame.h \
  ..\View/../CD/CDElement.h ..\UV_Lamp_Controller.ino
@@ -159,6 +160,8 @@ C:\eclipse\cpp-oxygen\eclipse\arduinoPlugin\libraries\ArduinoSTL\1.1.0\src/initi
 ..\View/../CD/CDScreen.h:
 
 ..\View/../CD/CDFrame.h:
+
+..\View/../CD/CDScreen.h:
 
 ..\View/../CD/../Geometry/Coordinates.h:
 

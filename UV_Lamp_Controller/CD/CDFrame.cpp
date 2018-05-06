@@ -131,6 +131,14 @@ void CDFrame::setViewPosition(uint8_t viewPosition){
 	//
 }
 
+void CDFrame::setParent(CDScreen* parent){
+	this->parent = parent;
+}
+
+CDScreen* CDFrame::getParent(){
+	return this->parent;
+}
+
 Coordinates* CDFrame::indexToCoordinates(unsigned short int i){
 	return GeometryUtil::indexToCoordinates(i, columns);
 }
@@ -139,9 +147,13 @@ unsigned short int CDFrame::coordinatesToIndex(Coordinates* coords){
 	return GeometryUtil::coordinatesToIndex(coords, columns);
 }
 
-
 uint8_t CDFrame::columnsToVerticalCell(uint8_t cols){
-	return (16/columns)*cols;
+	CDScreen* parent = getParent();
+	if(parent){
+		uint8_t c = parent->getColumns();
+		return (c/columns)*cols;
+	}
+	return cols;
 }
 
 void CDFrame::print(LiquidCrystal* lcd){

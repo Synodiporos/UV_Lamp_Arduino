@@ -25,8 +25,18 @@ CDScreen::~CDScreen() {
 }
 
 void CDScreen::init(uint8_t cols, uint8_t rows){
+	this->columns = cols;
+	this->rows = rows;
 	if(this->lcd)
 		this->lcd->begin(cols, rows);
+}
+
+uint8_t CDScreen::getColumns(){
+	return this->columns;
+}
+
+uint8_t CDScreen::getRows(){
+	return this->rows;
 }
 
 void CDScreen::addFrame(CDFrame* frame){
@@ -59,7 +69,10 @@ void CDScreen::addFrameAt(CDFrame* frame, uint8_t index){
 }
 
 void CDScreen::addingFrame(CDFrame* frame){
-	setCurrentFrameIndex(size-1);
+	if(frame){
+		frame->setParent(this);
+		setCurrentFrameIndex(size-1);
+	}
 }
 
 void CDScreen::removeFrameAt(uint8_t index){

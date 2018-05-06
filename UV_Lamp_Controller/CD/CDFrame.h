@@ -7,6 +7,9 @@
 
 #ifndef CD_CDFRAME_H_
 #define CD_CDFRAME_H_
+
+class CDScreen;
+#include "CDScreen.h"
 #include "../Geometry/Coordinates.h"
 #include "../Geometry/GeometryUtil.h"
 #include "CDElement.h"
@@ -39,6 +42,9 @@ public:
 	void setViewPosition(uint8_t viewPosition);
 	uint8_t columnsToVerticalCell(uint8_t cols);
 
+	void setParent(CDScreen* parent);
+	CDScreen* getParent();
+
 	void print(LiquidCrystal* lcd);
 	void validate();
 
@@ -49,6 +55,7 @@ private:
 	uint8_t size = 0;
 	uint8_t capacity = 0;
 	CDElement** elements;
+	CDScreen* parent = nullptr;
 
 	Coordinates* indexToCoordinates(unsigned short int i);
 	unsigned short int coordinatesToIndex(Coordinates* coords);
