@@ -122,7 +122,7 @@ void CDScreen::printCurrentFrame(){
 
 void CDScreen::printFrame(CDFrame* frame){
 	if(frame){
-		frame->print(this->lcd);
+		frame->printVisibleElements(this->lcd);
 	}
 }
 

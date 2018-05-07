@@ -16,12 +16,16 @@
 
 class GUI : public CDScreen{
 public:
-	CDFrame* frameMain = new CDFrame(4, 2, 2);
+	CDFrame* frameMain = new CDFrame(8, 2, 2);
 	CDFrame frameMenu1;
 	CDElement* label1 = new CDElement("label1");
 	CDElement* label2 = new CDElement("label2");
 	CDElement* label3 = new CDElement("label3");
 	CDElement* label4 = new CDElement("label4");
+	CDElement* label5 = new CDElement("label5");
+	CDElement* label6 = new CDElement("label6");
+	CDElement* label7 = new CDElement("label7");
+	CDElement* label8 = new CDElement("label8");
 
 	GUI(LiquidCrystal* lcd);
 	virtual ~GUI();

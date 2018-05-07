@@ -46,6 +46,7 @@ public:
 	CDScreen* getParent();
 
 	void print(LiquidCrystal* lcd);
+	void printVisibleElements(LiquidCrystal* lcd);
 	void validate();
 
 private:

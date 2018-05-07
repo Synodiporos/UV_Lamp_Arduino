@@ -157,10 +157,9 @@ uint8_t CDFrame::columnsToVerticalCell(uint8_t cols){
 }
 
 void CDFrame::print(LiquidCrystal* lcd){
-	for(short int i=0; i<=size; i++){
+	for(short int i=0; i<size; i++){
 		CDElement* elem = elements[i];
 		if(elem){
-
 			Coordinates* c = indexToCoordinates(i);
 			uint8_t x = columnsToVerticalCell(c->getX());
 			lcd->setCursor(x, c->getY());
@@ -168,7 +167,28 @@ void CDFrame::print(LiquidCrystal* lcd){
 			Serial.print("Set cursor: [");
 			Serial.print(x);
 			Serial.print(",");
+			Serial.print(c->getY());
+			Serial.println("]");
+
+			elem->print(lcd);
+		}
+	}
+}
+
+void CDFrame::printVisibleElements(LiquidCrystal* lcd){
+	uint8_t start = this->position*this->columns;
+	uint8_t end = start + this->rows*this->columns;
+	for(short int i=start; i<end; i++){
+		CDElement* elem = elements[i];
+		if(elem){
+			Coordinates* c = indexToCoordinates(i);
+			uint8_t x = columnsToVerticalCell(c->getX());
+			lcd->setCursor(x, c->getY()-position);
+
+			Serial.print("Set cursor: [");
 			Serial.print(x);
+			Serial.print(",");
+			Serial.print(c->getY()-position);
 			Serial.println("]");
 
 			elem->print(lcd);
